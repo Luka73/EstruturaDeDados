@@ -2,6 +2,7 @@ package CamachoClass.Aula02;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
@@ -45,7 +46,12 @@ public class Secao1ListasUnitTest {
 
     @Test
     public void ex1_inverterLista() {
-        List<String> frutas = Arrays.asList("Banana", "Melão", "Maça", "Melancia");
+        //List<String> frutas = Arrays.asList("Banana", "Melão", "Maça", "Melancia");
+        List<String> frutas = new ArrayList<>();
+        frutas.add("Banana");
+        frutas.add("Melão");
+        frutas.add("Maça");
+        frutas.add("Melancia");
         Secao1Listas.inverterLista(frutas);
 
         assertThat(frutas.get(0), is("Melancia"));
@@ -53,21 +59,24 @@ public class Secao1ListasUnitTest {
         assertThat(frutas.get(2), is("Melão"));
         assertThat(frutas.get(3), is("Banana"));
 
-        List<Pessoa> pessoas = Arrays.asList(
-                new Pessoa("A", 25),
-                new Pessoa("B", 60),
-                new Pessoa("C", 7)
-        );
-        Secao1Listas.inverterLista(pessoas);
+       List<Pessoa> pessoas = new ArrayList<>();
+       pessoas.add(new Pessoa("A", 25));
+       pessoas.add(new Pessoa("B", 60));
+       pessoas.add(new Pessoa("C", 7));
+       Secao1Listas.inverterLista(pessoas);
 
-        assertThat(pessoas.get(0).nome, is("C"));
-        assertThat(pessoas.get(1).nome, is("B"));
-        assertThat(pessoas.get(2).nome, is("A"));
+       assertThat(pessoas.get(0).nome, is("C"));
+       assertThat(pessoas.get(1).nome, is("B"));
+       assertThat(pessoas.get(2).nome, is("A"));
     }
 
     @Test
     public void ex2_retornarListaInvertida() {
-        List<String> frutas = Arrays.asList("Banana", "Melão", "Maça", "Melancia");
+        List<String> frutas = new ArrayList<>();
+        frutas.add("Banana");
+        frutas.add("Melão");
+        frutas.add("Maça");
+        frutas.add("Melancia");
         List<String> frutasInvertidas = Secao1Listas.retornarListaInvertida(frutas);
 
         assertThat(frutasInvertidas.get(0), is("Melancia"));
@@ -78,22 +87,21 @@ public class Secao1ListasUnitTest {
         assertThat(frutas.get(0), is("Banana"));
         assertThat(frutas.get(1), is("Melão"));
         assertThat(frutas.get(2), is("Maça"));
-        assertThat(frutas.get(3), is("Melancias"));
+        assertThat(frutas.get(3), is("Melancia"));
 
-        List<Pessoa> pessoas = Arrays.asList(
-                new Pessoa("A", 25),
-                new Pessoa("B", 60),
-                new Pessoa("C", 7)
-        );
+        List<Pessoa> pessoas = new ArrayList<>();
+        pessoas.add(new Pessoa("A", 25));
+        pessoas.add(new Pessoa("B", 60));
+        pessoas.add(new Pessoa("C", 7));
         List<Pessoa> pessoasInvertidas = Secao1Listas.retornarListaInvertida(pessoas);
 
         assertThat(pessoasInvertidas.get(0).nome, is("C"));
         assertThat(pessoasInvertidas.get(1).nome, is("B"));
         assertThat(pessoasInvertidas.get(2).nome, is("A"));
 
-        assertThat(pessoasInvertidas.get(0).nome, is("A"));
-        assertThat(pessoasInvertidas.get(1).nome, is("B"));
-        assertThat(pessoasInvertidas.get(2).nome, is("C"));
+        assertThat(pessoas.get(0).nome, is("A"));
+        assertThat(pessoas.get(1).nome, is("B"));
+        assertThat(pessoas.get(2).nome, is("C"));
     }
 
     @Test
@@ -102,5 +110,13 @@ public class Secao1ListasUnitTest {
         assertThat(Secao1Listas.listaContemElemento(frutas, "Maça"), is(true));
         assertThat(Secao1Listas.listaContemElemento(frutas, "Melão"), is(true));
         assertThat(Secao1Listas.listaContemElemento(frutas, "Uva"), is(false));
+    }
+
+    @Test
+    public void exceptionOnArrayAsList() {
+        List<String> frutas = Arrays.asList("Banana", "Melão", "Maça", "Melancia");
+        frutas.add("Uva");
+
+        assertThat(frutas.get(4), is("Uva"));
     }
 }

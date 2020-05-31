@@ -1,7 +1,7 @@
 package CamachoClass.Aula02;
 
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
-
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Secao1Listas {
@@ -12,7 +12,16 @@ public class Secao1Listas {
      * @param <T>
      */
     public static <T> void inverterLista(List<T> lista) {
-        throw new NotImplementedException();
+        List<T> tmpList = new ArrayList<>();
+        int pos = 0;
+
+        for (int i = lista.size() - 1; i >= 0; i--) {
+            tmpList.add(pos, lista.get(i));
+            pos++;
+        }
+
+        lista.clear();
+        lista.addAll(tmpList);
     }
 
     /**
@@ -21,7 +30,15 @@ public class Secao1Listas {
      * @param <T>
      */
     public static <T> List<T> retornarListaInvertida(List<T> lista) {
-        throw new NotImplementedException();
+        List<T> tmpList = new ArrayList<>();
+        int pos = 0;
+
+        for (int i = lista.size() - 1; i >= 0; i--) {
+            tmpList.add(pos, lista.get(i));
+            pos++;
+        }
+
+        return tmpList;
     }
 
     /**
@@ -32,6 +49,6 @@ public class Secao1Listas {
      * @return
      */
     public static <T> boolean listaContemElemento(List<T> lista, T elemento) {
-        throw new NotImplementedException();
+        return lista.contains(elemento);
     }
 }
