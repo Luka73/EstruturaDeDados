@@ -3,10 +3,11 @@ package CamachoClass.Aula02;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
+import static java.util.Arrays.asList;
+import static java.util.Collections.emptyList;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
 
@@ -106,17 +107,45 @@ public class Secao1ListasUnitTest {
 
     @Test
     public void ex3_listaContemElemento() {
-        List<String> frutas = Arrays.asList("Banana", "Melão", "Maça", "Melancia");
+        List<String> frutas = asList("Banana", "Melão", "Maça", "Melancia");
         assertThat(Secao1Listas.listaContemElemento(frutas, "Maça"), is(true));
         assertThat(Secao1Listas.listaContemElemento(frutas, "Melão"), is(true));
         assertThat(Secao1Listas.listaContemElemento(frutas, "Uva"), is(false));
     }
+    
+    @Test
+    public void ex4_listaContemElementosNaMesmaOrdem() {
+        List<Integer> numeros = asList(1, 2, 3, 4);
+
+        assertThat(Secao1Listas.listaContemElementosNaMesmaOrdem(numeros, asList(2, 3, 4)), is(true));
+        assertThat(Secao1Listas.listaContemElementosNaMesmaOrdem(numeros, asList(4, 3, 2)), is(false));
+        assertThat(Secao1Listas.listaContemElementosNaMesmaOrdem(numeros, asList(2, 3, 4, 5)), is(false));
+        assertThat(Secao1Listas.listaContemElementosNaMesmaOrdem(numeros, asList(1, 2, 3, 4)), is(true));
+        assertThat(Secao1Listas.listaContemElementosNaMesmaOrdem(numeros, asList(3)), is(true));
+    }
 
     @Test
-    public void exceptionOnArrayAsList() {
-        List<String> frutas = Arrays.asList("Banana", "Melão", "Maça", "Melancia");
-        frutas.add("Uva");
+    public void ex5_listaContemExatamenteOsMesmosElementosEmQualquerOrdem() {
+        List<Integer> numeros = asList(1, 2, 3, 4);
+        assertThat(Secao1Listas.listaContemElementosNaMesmaOrdem(numeros, asList(1, 2, 3, 4)), is(true));
+        assertThat(Secao1Listas.listaContemElementosNaMesmaOrdem(numeros, asList(4, 2, 3, 1)), is(true));
+        assertThat(Secao1Listas.listaContemElementosNaMesmaOrdem(numeros, asList(2, 3, 1)), is(true));
 
-        assertThat(frutas.get(4), is("Uva"));
+        List<Integer> numeros2 = asList(4);
+        assertThat(Secao1Listas.listaContemElementosNaMesmaOrdem(numeros2, asList(4)), is(true));
+        assertThat(Secao1Listas.listaContemElementosNaMesmaOrdem(numeros2, asList(4, 2)), is(false));
+        assertThat(Secao1Listas.listaContemElementosNaMesmaOrdem(numeros2, emptyList()), is(false));
+    }
+
+    @Test
+    public void ex6_listaContemExatamenteOsMesmosElementosNaMesmaOrdem() {
+        List<Integer> numeros = asList(1, 2, 3, 4);
+        assertThat(Secao1Listas.listaContemElementosNaMesmaOrdem(numeros, asList(1, 2, 3, 4)), is(true));
+        assertThat(Secao1Listas.listaContemElementosNaMesmaOrdem(numeros, asList(4, 2, 3, 1)), is(false));
+
+        List<Integer> numeros2 = asList(4);
+        assertThat(Secao1Listas.listaContemElementosNaMesmaOrdem(numeros2, asList(4)), is(true));
+        assertThat(Secao1Listas.listaContemElementosNaMesmaOrdem(numeros2, asList(4, 2)), is(false));
+        assertThat(Secao1Listas.listaContemElementosNaMesmaOrdem(numeros2, emptyList()), is(false));
     }
 }

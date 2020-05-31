@@ -1,7 +1,6 @@
 package CamachoClass.Aula02;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class Secao1Listas {
@@ -50,5 +49,38 @@ public class Secao1Listas {
      */
     public static <T> boolean listaContemElemento(List<T> lista, T elemento) {
         return lista.contains(elemento);
+    }
+
+    /**
+     * Retorna true se todos os elementos na lista 2 e estão contidos na lista 1 na mesma ordem que estão na lista 2.
+     * @param lista1
+     * @param lista2
+     * @param <T>
+     * @return
+     */
+    public static <T> boolean listaContemElementosNaMesmaOrdem(List<T> lista1, List<T> lista2) {
+        return false;
+    }
+
+    /**
+     * Retorna true se ambas as listas tem exatamente os mesmos elementos em qualquer ordem
+     * @param lista1
+     * @param lista2
+     * @param <T>
+     * @return
+     */
+    public static <T> boolean listaContemExatamenteOsMesmosElementosEmQualquerOrdem(List<T> lista1, List<T> lista2) {
+        return false;
+    }
+
+    /**
+     * Retorna true se ambas as listas tem exatamente os mesmos elementos na exata mesma ordem
+     * @param lista1
+     * @param lista2
+     * @param <T>
+     * @return
+     */
+    public static <T> boolean listaContemExatamenteOsMesmosElementosNaMesmaOrdem(List<T> lista1, List<T> lista2) {
+        return false;
     }
 }
