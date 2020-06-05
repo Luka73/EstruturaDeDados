@@ -126,6 +126,17 @@ public class Secao1ListasUnitTest {
         assertThat(Secao1Listas.listaContemElementosNaMesmaOrdem(numeros, emptyList()), is(false));
         assertThat(Secao1Listas.listaContemElementosNaMesmaOrdem(emptyList(), emptyList()), is(true));
         assertThat(Secao1Listas.listaContemElementosNaMesmaOrdem(emptyList(), singletonList(3)), is(false));
+        assertThat(Secao1Listas.listaContemElementosNaMesmaOrdem(asList(3, 2, 3, 4), asList(2, 3, 4)), is(true));
+        assertThat(Secao1Listas.listaContemElementosNaMesmaOrdem(asList(3, 3, 3, 4), asList(3, 4)), is(true));
+        assertThat(Secao1Listas.listaContemElementosNaMesmaOrdem(
+                asList(1, 2, 4, 5, 1, 2, 3, 1, 1, 2, 3, 4),
+                asList(1, 2, 3, 4)),
+                is(true));
+
+        assertThat(Secao1Listas.listaContemElementosNaMesmaOrdem(
+                asList(1, 2, 1, 1, 1, 3),
+                asList(1, 1, 3)),
+                is(true));
     }
 
     @Test
