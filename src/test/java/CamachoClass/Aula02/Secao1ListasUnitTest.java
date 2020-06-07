@@ -113,19 +113,22 @@ public class Secao1ListasUnitTest {
         assertThat(Secao1Listas.listaContemElemento(frutas, "Melão"), is(true));
         assertThat(Secao1Listas.listaContemElemento(frutas, "Uva"), is(false));
     }
-    
+
+
     @Test
     public void ex4_listaContemElementosNaMesmaOrdem() {
         List<Integer> numeros = asList(1, 2, 3, 4);
+        List<Integer> numeros2 = asList(3, 2, 3, 4);
 
+        assertThat(Secao1Listas.listaContemElementosNaMesmaOrdem(emptyList(), emptyList()), is(true));
+        assertThat(Secao1Listas.listaContemElementosNaMesmaOrdem(numeros, emptyList()), is(false));
+        assertThat(Secao1Listas.listaContemElementosNaMesmaOrdem(numeros, singletonList(3)), is(true));
+        assertThat(Secao1Listas.listaContemElementosNaMesmaOrdem(emptyList(), singletonList(3)), is(false));
         assertThat(Secao1Listas.listaContemElementosNaMesmaOrdem(numeros, asList(2, 3, 4)), is(true));
         assertThat(Secao1Listas.listaContemElementosNaMesmaOrdem(numeros, asList(4, 3, 2)), is(false));
         assertThat(Secao1Listas.listaContemElementosNaMesmaOrdem(numeros, asList(2, 3, 4, 5)), is(false));
         assertThat(Secao1Listas.listaContemElementosNaMesmaOrdem(numeros, asList(1, 2, 3, 4)), is(true));
-        assertThat(Secao1Listas.listaContemElementosNaMesmaOrdem(numeros, singletonList(3)), is(true));
-        assertThat(Secao1Listas.listaContemElementosNaMesmaOrdem(numeros, emptyList()), is(false));
-        assertThat(Secao1Listas.listaContemElementosNaMesmaOrdem(emptyList(), emptyList()), is(true));
-        assertThat(Secao1Listas.listaContemElementosNaMesmaOrdem(emptyList(), singletonList(3)), is(false));
+        assertThat(Secao1Listas.listaContemElementosNaMesmaOrdem(numeros2, asList(2, 3, 4)), is(true));
     }
 
     @Test
