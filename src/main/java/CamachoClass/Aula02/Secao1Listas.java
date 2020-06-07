@@ -61,7 +61,7 @@ public class Secao1Listas {
      * @return
      */
     public static <T> boolean listaContemElementosNaMesmaOrdem(List<T> lista1, List<T> lista2) {
-        int count = 0;
+        int j = 0;
 
         if (lista1.isEmpty()) {
             return lista2.isEmpty();
@@ -75,20 +75,19 @@ public class Secao1Listas {
 
         if(lista1.contains(n)) {
             int i = lista1.indexOf(n);
-            int j = 0;
 
             while (i < lista1.size() && j < lista2.size()) {
                 if(lista1.get(i).equals(lista2.get(j))) {
-                    count++;
                     j++;
+                    i++;
                 } else {
-                    count = 0;
+                    i = (i - j) + 1;
+                    j = 0;
                 }
-                i++;
             }
         }
 
-        return count == lista2.size();
+        return j == lista2.size();
     }
 
     /**
@@ -99,7 +98,23 @@ public class Secao1Listas {
      * @return
      */
     public static <T> boolean listaContemExatamenteOsMesmosElementosEmQualquerOrdem(List<T> lista1, List<T> lista2) {
-        return false;
+        int j = 0;
+
+        if (lista1.isEmpty()) {
+            return lista2.isEmpty();
+        }
+
+        if (lista2.isEmpty() || (lista2.size() > lista1.size())) {
+            return false;
+        }
+
+        for(T element : lista2) {
+            if(lista1.contains(element)) {
+                j++;
+            }
+        }
+
+        return j == lista2.size();
     }
 
     /**
@@ -110,6 +125,6 @@ public class Secao1Listas {
      * @return
      */
     public static <T> boolean listaContemExatamenteOsMesmosElementosNaMesmaOrdem(List<T> lista1, List<T> lista2) {
-        return false;
+        return lista1.equals(lista2);
     }
 }
