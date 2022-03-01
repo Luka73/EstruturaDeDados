@@ -3,10 +3,11 @@ package CamachoClass.Aula01;
 import CamachoClass.Aula01.Interfaces.List;
 
 import java.util.function.Consumer;
+import java.util.function.Function;
 
 public class ArrayList<T> implements List<T> {
 
-    public T[] arr = (T[])new Object[3];
+    private T[] arr = (T[])new Object[3];
     int count = 0;
 
     @Override
@@ -66,5 +67,14 @@ public class ArrayList<T> implements List<T> {
         for(int i = 0; i < this.size(); i++) {
             obj.accept(this.arr[i]);
         }
+    }
+
+    public <E> ArrayList<E> map(Function<T, E> fun) {
+        ArrayList<E> newList = new ArrayList<>();
+        for (int i = 0; i < this.size(); i++) {
+            newList.add(fun.apply(arr[i]));
+        }
+
+        return newList;
     }
 }

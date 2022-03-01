@@ -1,6 +1,6 @@
 package CamachoClass.Aula01;
 
-import CamachoClass.Aula01.Interfaces.List;
+import java.util.function.Function;
 
 public class Program {
     public static void main(String[] args) {
@@ -65,9 +65,25 @@ public class Program {
 
         //list.forEach(e -> System.out.println(e)); */
 
-      List<Integer> myList = new LinkedList<>();
+      ArrayList<Integer> myList = new ArrayList<>();
       myList.add(1);
       myList.add(2);
+      myList.add(3);
+      myList.add(4);
+      myList.add(5);
+
+      Function<Integer, String> myFun
+              = Program::toString;
+
+      ArrayList<String> stringArrayList = myList.map(myFun);
+
+
+      for (int i = 0; i < stringArrayList.size(); i++) {
+          System.out.println(stringArrayList.get(i));
+      }
+
+
+
 
 
 
@@ -77,10 +93,17 @@ public class Program {
       //System.out.println(n);
 
 
-      myList.remove(2);
+     /* myList.remove(2);
       myList.forEach(e -> System.out.println(e));
-      System.out.println("Total: " + myList.size());
+      System.out.println("Total: " + myList.size());*/
 
 
+
+
+    }
+
+    public static String toString(Integer a)
+    {
+        return a.toString();
     }
 }
