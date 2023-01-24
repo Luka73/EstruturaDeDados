@@ -1,4 +1,4 @@
-package CamachoClass.Aula04;
+package CamachoClass.Aula04.Programa1;
 
 public class Aluno {
     String nome;
