@@ -11,19 +11,18 @@ public class Programa3 {
         System.out.println(Arrays.toString(reverse(carsOdd)));
     }
 
-    public static String[] reverse(String[] input) {
-        int first = 0;
-        int last = input.length - 1;
-        int middle = (int) (input.length / 2.0);
+    public static Object[] reverse(Object[] input) {
+        int i = 0;
+        int j = input.length - 1;
 
         do {
-            String temp = input[first];
-            input[first] = input[last];
-            input[last] = temp;
+            Object temp = input[i];
+            input[i] = input[j];
+            input[j] = temp;
 
-            first++;
-            last--;
-        } while (!(first == middle));
+            i++;
+            j--;
+        } while (i < j);
 
         return input;
     }
